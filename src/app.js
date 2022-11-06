@@ -23,6 +23,9 @@ app.use(userLoggedMiddleware);
 const mainRouter = require('./routes/mainRouter.js')
 const userRouter = require('./routes/userRouter.js')
 const productsRouter = require('./routes/products.js'); // Rutas /products
+// API routers
+const APIUsersRouter = require('./routes/API/usersRouter');
+const APIProductsRouter = require('./routes/API/productsRouter');
 
 //Configuracion de la app
 //Carpetas publicas
@@ -39,6 +42,9 @@ app.use('/', mainRouter)
 app.use('/user', userRouter)
 app.use('/products', productsRouter);
 
+// API routes
+app.use('/api/products', APIProductsRouter);
+app.use('/api/users', APIUsersRouter);
 
 const port = process.env.PORT || 3030;
 app.listen(port, () => console.log(`Example app listening on port ${port}!`))
