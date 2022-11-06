@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const session = require('express-session')
 const userLoggedMiddleware = require('./middleware/userLoggedMiddleware');
 const cookies = require('cookie-parser');
+const cors = require('cors'); // agrego esto para poder trabajar con Apis en la App de React
 //heroku git:remote -a fwines-sp6-grupo7
 //inicializo session
 app.use(session({
