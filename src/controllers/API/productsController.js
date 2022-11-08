@@ -40,13 +40,55 @@ const productController = {
         }
        
     },
+
+    lastProductApi: async (req,res) => {
+        //const id = Number(req.params.id);
+        try {
+            const lastProduct = await Product.findAll({
+                //include: [{ model: Imagesproduct, attributes: ['nameImage'] }],
+                order: [['id', 'DESC']],
+                limit: 1
+            })
+            console.log(lastProduct)
+            //destructuro el array
+            let [ultimoProducto] = lastProduct
+            const id = ultimoProducto.dataValues.id
+            const product = await Product.findByPk(id, {
+                include: [Bodegas,Varietal,Imagesproduct],
+                //include: [{ model: Imagesproduct, attributes: ['nameImage'] }]
+            });
+
+            console.log(product)
+            
+           // let product = [...lastProduct][0]
+            //console.log(product)
+            //product = product.toJSON()
+            //console.log(product)
+              //  product.image = `images/products/${product.Images[0].path}`;
+                //console.log(product.image)
+
+
+            let respuesta = {
+                meta:{
+                    status: 200,
+                },
+                product
+            }
+
+            return res.status(200).json(respuesta);
+            
+        }catch (error) {
+            res.json(error.message)
+        }
+    },
+
     productDetailApi: async (req,res) => {
         //const id = Number(req.params.id);
         try {
             const id = req.params.id
             const product = await Product.findByPk(id, {
                 include: [Bodegas,Varietal,Imagesproduct],
-                include: [{ model: Imagesproduct, attributes: ['nameImage'] }]
+                //include: [{ model: Imagesproduct, attributes: ['nameImage'] }]
             });
             
             let respuesta = {
@@ -56,7 +98,7 @@ const productController = {
                 product
             }
 
-            return res.json({product});
+            return res.json(respuesta);
             
         }catch (error) {
             res.json(error.message)
