@@ -43,9 +43,11 @@ const userController = {
           
           delete user.dataValues.password
           delete user.dataValues.rolesId
-          delete user.dataValues.image
+          //delete user.dataValues.image
 
-          user.dataValues.urlImage = `/api/users/image/${user.id}`
+          //user.dataValues.urlImage = `/api/users/image/${user.id}`
+          user.dataValues.urlImage = `images/users/${user.dataValues.image}`
+          
           console.log(user)
 
           let respuesta = {
@@ -61,6 +63,7 @@ const userController = {
           res.json(error.message)
       }
   },
+
   userImageApi: async (req,res) => {
     //const id = Number(req.params.id);
     try {

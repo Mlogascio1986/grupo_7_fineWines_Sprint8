@@ -50,7 +50,7 @@ const productController = {
                 limit: 1
             })
             console.log(lastProduct)
-            //destructuro el array
+            //desestructuro el array
             let [ultimoProducto] = lastProduct
             const id = ultimoProducto.dataValues.id
             const product = await Product.findByPk(id, {
@@ -58,15 +58,9 @@ const productController = {
                 //include: [{ model: Imagesproduct, attributes: ['nameImage'] }]
             });
 
-            console.log(product)
-            
-           // let product = [...lastProduct][0]
-            //console.log(product)
-            //product = product.toJSON()
-            //console.log(product)
-              //  product.image = `images/products/${product.Images[0].path}`;
-                //console.log(product.image)
+            console.log(product.dataValues.Imagesproducts)
 
+            product.dataValues.urlImage = `images/products/${product.dataValues.Imagesproducts[0].nameImage}`; 
 
             let respuesta = {
                 meta:{
@@ -90,7 +84,11 @@ const productController = {
                 include: [Bodegas,Varietal,Imagesproduct],
                 //include: [{ model: Imagesproduct, attributes: ['nameImage'] }]
             });
-            
+
+            console.log(product)
+
+            product.dataValues.urlImage = `images/products/${product.dataValues.Imagesproducts[0].nameImage}`;
+
             let respuesta = {
                 meta:{
                     status: 200,
