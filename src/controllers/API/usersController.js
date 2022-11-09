@@ -63,19 +63,6 @@ const userController = {
           res.json(error.message)
       }
   },
-
-  userImageApi: async (req,res) => {
-    //const id = Number(req.params.id);
-    try {
-        const id = req.params.id
-        const user = await User.findByPk(id);
-        
-        return res.render( 'users/userImageApi.ejs',{user});
-        
-    }catch (error) {
-        res.json(error.message)
-    }   
-},
 }
 
 module.exports = userController

@@ -8,6 +8,4 @@ router.get('/', userController.userIndexApi);
 
 router.get('/:id', userController.userDetailApi);
 
-router.get('/image/:id', userController.userImageApi);
-
 module.exports = router;
