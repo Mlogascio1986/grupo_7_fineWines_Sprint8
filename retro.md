@@ -9,7 +9,7 @@
 
 3 En que podemos mejorar
 
-    Seguir con esfuerzo para cumplir fechas de entrega
+    Seguir capacitandonos
     
 4 Qué tenemos que dejar de hacer?
 
@@ -17,6 +17,6 @@
 
 5 Qué podemos empezar a hacer?
 
-    Sprint 8
+    Continuar practicando
 
 

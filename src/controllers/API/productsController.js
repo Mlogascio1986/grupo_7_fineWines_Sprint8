@@ -8,8 +8,9 @@ const productController = {
     productIndexApi: async (req,res) => {
         try {
             const products = await Product.findAll({
-                attributes: ['id', 'name', 'description', 'category'],
-                //include: [Varietal, Bodegas, Imagesproduct]
+                attributes: ['id', 'name', 'description', 'category', 'price', 'discount'],
+                include: [{model: Varietal, attributes: ['nameVarietal']}, 
+                {model: Bodegas, attributes: ['nameBodega']}, Imagesproduct]
                 // include: [{ model: db.Category, attributes: ['name'] },...]
             })
             console.log(products)
