@@ -109,7 +109,7 @@ const controller = {
                     productId: newbie.id,
                 }])}    
         console.log('cree un nuevo producto')
-        res.render('/')
+        res.redirect("/")
         } catch (error) {
         res.json(error.message)
         }
@@ -203,9 +203,19 @@ const controller = {
                     })
                 }
                 if (imagenes.length > 0) {
+                    //const oldImages = await Imagesproduct.findAll({where: {productId: id}})
+                    //oldImages.forEach( image => {
+                      //  fs.unlinkSync(path.resolve(__dirname, '../../public/images/products/'+image.nameImage))
+                    //})
+                    await Imagesproduct.destroy({where: {productId: id}})
                     await Imagesproduct.bulkCreate(imagenes)
                 }
+                //if (imagenes.length > 0) {
+                  //  await Imagesproduct.bulkCreate(imagenes)
+                //}
+
                 res.redirect('/')
+
         // Creamos un array vacío para ir almacenado los nombres de los archivos
         /*let imagenes = [];
 
@@ -246,9 +256,9 @@ const controller = {
             });
             console.log(imagenDel)
             console.log(imagenDel[0].nameImage)
-            if (imagenDel.nameImage != 'default-product-image.png') {
-                fs.unlinkSync(path.resolve(__dirname, '../../public/images/products/'+imagenDel[0].nameImage))
-            }
+            //if (imagenDel.nameImage != 'default-product-image.png') {
+              //  fs.unlinkSync(path.resolve(__dirname, '../../public/images/products/'+imagenDel[0].nameImage))
+            //}
             
             await Imagesproduct.destroy({
                 where: {
