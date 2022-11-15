@@ -101,7 +101,7 @@ const controller = {
          //Reviso imagenes, si hay uso bulkCreate   
          if (Images.length > 0) {
                 await Imagesproduct.bulkCreate(Images)
-                res.redirect('/')
+                //res.redirect('/')
             } else {
                 //si no hay subo default
                 await Imagesproduct.create([{
